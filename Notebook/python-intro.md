@@ -4,6 +4,9 @@
 print("Hi there, Python 3")     # How to print something?
 ```
 
+    Hi there, Python 3
+    
+
 ### semicolon
 
 `Where are those semicolons?`
@@ -16,7 +19,8 @@ print('Hi '); print('there, '); print('Pyhton 3')    # Interpreters vs Compilers
                                                      # Youtube streaming vs Downloading analogy
 ```
 
-    Hi, 
+    Hi 
+    there, 
     Pyhton 3
     
 
@@ -26,7 +30,7 @@ a = input('a = ')                             # CLI
 b = input('b = ')
 
 a += '0'                                      # string concatenation
-b += '0'
+b += '0'                                      # operator overloading
 
 print(type(a))                                # string
 
@@ -34,14 +38,10 @@ print(a+b)
                             
 ```
 
-    a = 12
-    b = 12
+    a = 16
+    b = 2
     <class 'str'>
-    120120
-    <class 'int'>
-    125 125 250
-    Just gonna print a 1
-    1
+    16020
     
 
 
@@ -67,6 +67,14 @@ b += 5
 print(a,b,a+b)
 
 ```
+
+    a = 10
+    b = 5
+    <class 'str'>
+    10050
+    <class 'int'>
+    105 55 160
+    
 
 
 ```python
@@ -100,6 +108,16 @@ else:
 print(a//b)                                   
 ```
 
+    a = 7
+    b = 17
+    <class 'str'>
+    70170
+    <class 'int'>
+    75 175 250
+    Just gonna print a 0
+    0
+    
+
 ### a little bit of modular arithmetic
 
   * How many multiples of $3$ are there in a list?
@@ -108,19 +126,22 @@ print(a//b)
 
 
 ```python
-a_list = [1,2,3,4,5,6,7,8,9,10]          # list
+# a_list = [1,2,3,4,5,6,7,8,9,10]          # list
 
-# a_list = list(range(1,11))               # why 11?
+a_list = list(range(1,11))               # why 11?
 
 print(type(a_list))
 
+print(a_list)
+
 for a_i in a_list:
-    # if a_i % 3 == 0:
+     if a_i % 3 == 0:
         print(a_i,end = ' ')
 ```
 
     <class 'list'>
-    1 2 3 4 5 6 7 8 9 10 
+    [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    3 6 9 
 
 
 ```python
@@ -159,11 +180,11 @@ from future.backports import datetime as dt
 
 print(dt)
 
-print(dir(dt))                 #  dir() method tries to return a list of valid attributes of the object
+print(dir(dt),'\n')                 #  dir() method tries to return a list of valid attributes of the object
 
 today = dt.date.today()
 
-print(today)
+print(today,'\n')
 
 another_day = dt.date(2017,11,11)
 
@@ -173,10 +194,17 @@ print(another_day)
 ```
 
     <module 'future.backports.datetime' from 'C:\\Anaconda3\\lib\\site-packages\\future\\backports\\datetime.py'>
-    ['MAXYEAR', 'MINYEAR', 'PY2', '_EPOCH', '__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', 'absolute_import', 'bytes', 'date', 'datetime', 'datetime_CAPI', 'division', 'int', 'map', 'native_str', 'object', 'print_function', 'round', 'str', 'time', 'timedelta', 'timezone', 'tzinfo', 'unicode_literals']
-    2017-11-03
+    ['MAXYEAR', 'MINYEAR', 'PY2', '_EPOCH', '__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', 'absolute_import', 'bytes', 'date', 'datetime', 'datetime_CAPI', 'division', 'int', 'map', 'native_str', 'object', 'print_function', 'round', 'str', 'time', 'timedelta', 'timezone', 'tzinfo', 'unicode_literals'] 
+    
+    2017-11-04 
+    
     2017-11-11
     
+
+
+```python
+
+```
 
 ### python 2/3 compatibility and future
 
@@ -221,7 +249,7 @@ for x in xrange(11):
 
 
 ```python
-from future import division            # running python 3 in pyhton 2
+from __future__ import division            # running python 3 in pyhton 2
 
 
 ```
@@ -288,7 +316,95 @@ print(st)
     cd
     
 
+### let's develop our lil_geometry module
+
+* `go to a new fresh directory`
+* `create a folder 'pack_lev1'`
+* `inside, 'pack_lev1' create a python script named 'lil_geometry.py'`
+
+<img src="nm1.png" alt="CL" style="width: 500px;"/>
+
+
+```python
+
+```
+
+
+```python
+# lil_geometry.py
+import math as m
+
+def area_of_circle(rad):
+    return 2*m.pi*rad
+
+
+print(__name__)
+```
+
+    __main__
+    
+
+
+```python
+# lil_geometry.py
+import math as m
+
+def area_of_circle(rad):
+    return 2*m.pi*rad
+
+
+print(__name__)
+
+if ( __name__ == '__main__' ):
+    rad = input('Enter radius : ')
+    print("radius of cirlce is {}".format(area_of_circle(int(rad))))
+```
+
+    __main__
+    Enter radius : 12
+    radius of cirlce is 75.39822368615503
+    
+
+### module_test
+* `go to root`
+* `create a script named 'module_test'`
+
+
+```python
+# testing module lil_geometry.py
+
+from pack_lev1 import lil_geometry as lg
+```
+
+<img src="nm2.png" alt="CL" style="width: 500px;"/>
+
+### running module_test
+
+* `open cmd in that folder and type 'python module_test.py'`
+
+<img src="nm3.png" alt="CL" style="width: 500px;"/>
+
+<img src="nm4.png" alt="CL" style="width: 500px;"/>
+
+<img src="nm5.png" alt="CL" style="width: 500px;"/>
+
+<img src="nm6.png" alt="CL" style="width: 500px;"/>
+
+<img src="nm7.png" alt="CL" style="width: 500px;"/>
+
+
+```python
+# testing module lil_geometry.py
+
+from pack_lev1 import lil_geometry as lg
+
+print('module_test __name__ : {}'.format(__name__))
+
+print(lg.area_of_circle(5))  # using functions from imported module
+```
+
 ### github, git
+* a break for me  `    `  :P
 * go to `https://github.com` and open an account
 * verify email address
 
